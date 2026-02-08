@@ -1,7 +1,6 @@
 FROM alpine:3.20 AS builder
 RUN apk add --no-cache curl jq tar
 ARG TARGETARCH
-ARG SB_VER_TAG
 
 RUN set -eux; \
     SB_VER=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | jq -r '.tag_name' | sed 's/^v//'); \
@@ -20,9 +19,8 @@ COPY --from=builder /usr/local/bin/sing-box /usr/local/bin/
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# 只需要一个 UUID 变量，其他的全在脚本里写死了
 ENV UUID="" \
-    DEST_DOMAIN="www.microsoft.com" \
-    PORT=443 \
     GOGC=50
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
