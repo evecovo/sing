@@ -30,7 +30,7 @@ cat <<EOF > /etc/sing-box.json
         "reality": {
           "enabled": true,
           "handshake": { "server": "${FIXED_DEST}", "server_port": 443 },
-          "private_key": "${FIXED_PRIV}",
+          "private_key": "cGRzfbQ6s9w92yR1VY4KUg1wHqFq41kzT9k5JFF-ZGk",
           "short_id": ["${FIXED_SID}"]
         }
       }
@@ -59,7 +59,7 @@ echo "公钥 (pbk): ${FIXED_PUB}"
 echo "Short ID (sid): ${FIXED_SID}"
 echo "---------------------------------------------------"
 echo "分享链接 (请将 IP 换成服务器真实 IP):"
-echo "vless://${UUID}@你的服务器IP:${LISTEN_PORT}?encryption=none&security=reality&sni=${FIXED_DEST}&fp=chrome&pbk=${FIXED_PUB}&sid=${FIXED_SID}#REALITY-PERMANENT"
+echo "vless://${UUID}@你的服务器IP:${LISTEN_PORT}?encryption=none&security=reality&sni=${FIXED_DEST}&fp=chrome&pbk=AqIpWy9xxHNg5_b-QULhkT2hxheKRjp4skv_tTfCLWU&sid=${FIXED_SID}#REALITY-PERMANENT"
 echo "---------------------------------------------------"
 
 run_singbox
